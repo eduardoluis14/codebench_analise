@@ -57,3 +57,24 @@ O sistema utiliza uma arquitetura de duas passagens (*Two-Pass Analysis*):
 
 * **Parte 1:** Extrai métricas estruturais (profundidade, complexidade ciclomática, contagem de laços e condicionais).
 * **Parte 2:** Detecta os padrões algorítmicos utilizando o contexto global fornecido pela primeira passagem, garantindo maior precisão na classificação e redução de falsos positivos.
+
+## 5. Estrutura
+
+Como os arquivos brutos de logs e submissões são muito pesados, eles **não estão versionados neste repositório**. 
+
+```text
+📁 raiz_do_projeto/
+├── 📁 DataSet/
+│   ├── 📄 ids_questoes_de_prova_ipc.txt   # (Já incluso no repositório)
+│   ├── 📁 exercises/                      # (Coloque a pasta descompactada aqui)
+│   │   ├── 📁 1005919218/                 # ID do Exercício
+│   │   │   └── 📄 sample_solution.py      # Solução de referência do professor
+│   │   └── 📁 ...
+│   └── 📁 transactions/                   
+│       ├── 📁 3225967263/                 # ID do Aluno
+│       │   └── 📁 3573129627/             # ID da Turma
+│       │       └── 📁 1407130552/         # ID do Trabalho
+│       │           └── 📄 2667036473.log  # ID da questão + Log de keystrokes/submissões
+│       └── 📁 ...
+
+> **Nota:** Ajuste o caminho dos dados nos scripts caso seja necessário.
