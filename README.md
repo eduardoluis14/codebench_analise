@@ -1,7 +1,3 @@
-Aqui está a versão atualizada do seu `README.md`, incluindo a seção de requisitos de estrutura de dados para que qualquer pessoa (ou você mesmo no futuro) saiba exatamente o que precisa estar organizado para o pipeline funcionar.
-
----
-
 # Classificador de Padrões e Extrator de Métricas Educacionais
 
 Este repositório contém o pipeline de processamento de dados desenvolvido para o projeto de pesquisa em Mineração de Dados Educacionais. O objetivo é mapear a estrutura algorítmica de exercícios de programação e correlacionar estes padrões com métricas de esforço e desempenho discente, utilizando logs de interação de um juiz online.
