@@ -51,5 +51,5 @@ Este filtro garante que a pesquisa foque em dados de alta qualidade e relevânci
 
 O sistema foi construído com uma arquitetura de duas passagens (*Two-Pass Analysis*):
 
-* **Passagem 1:** Extrai métricas estruturais (profundidade, complexidade ciclomática, contagem de laços e condicionais).
-* **Passagem 2:** Detecta os padrões algorítmicos utilizando o contexto global fornecido pela primeira passagem, reduzindo falsos positivos e permitindo uma modelagem mais próxima da intenção lógica do aluno.
+* **Parte 1:** Extrai métricas estruturais (profundidade, complexidade ciclomática, contagem de laços e condicionais).
+* **Parte 2:** Detecta os padrões algorítmicos utilizando o contexto global fornecido pela primeira passagem, reduzindo falsos positivos e permitindo uma modelagem mais próxima da intenção lógica do aluno.
