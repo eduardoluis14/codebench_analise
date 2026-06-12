@@ -8,10 +8,10 @@ Para que o pipeline de extração funcione corretamente, o diretório raiz do pr
 
 * `transactions/`: Pasta contendo os logs brutos das ações dos alunos. O script espera que os logs estejam organizados em subpastas por `ID_Aluno/ID_Turma/ID_Trabalho/`.
 * `exercises/`: Pasta contendo as soluções de referência disponibilizadas pelos docentes. Cada subpasta deve corresponder a um `ID_Exercicio` e conter o arquivo `sample_solution.py` (ou um arquivo de solução de referência).
-* `ids_questoes_de_prova_ipc.txt`: Arquivo de texto contendo a lista dos IDs dos exercícios que compõem a "Lista VIP" (questões aplicadas em provas oficiais). O pipeline filtrará os dados baseando-se exclusivamente nestes IDs.
+* `ids_questoes_de_prova_ipc.txt`: Arquivo de texto contendo a lista dos IDs dos exercícios que compõem a "Lista VIP" (questões aplicadas em provas oficiais). O pipeline filtrará os dados baseando-se exclusivamente nestes IDs. O motivo de aplicar este filtro é isolar o escopo da pesquisa, garantindo que a análise de atrito cognitivo seja feita apenas com dados de avaliações reais, descartando ruídos gerados por exercícios de fixação livres. Estes IDs específicos foram extraídos de um arquivo CSV fornecido pelo professor David Fernandes (o arquivo original pode ser encontrado neste repositório dentro da pasta `Data`).
 
 > **Nota:** Solicitar os dados os dados, caso seja necessário, com o professore responsável (David Fernandes).
- 
+
 ## 2. Catalogação de Padrões (Programming Plans)
 
 O sistema utiliza uma taxonomia baseada em planos de programação, adaptando conceitos da literatura de De Raadt (2008) e Cruz Izu (2021) para a sintaxe Python. Os padrões atuais são:
@@ -51,16 +51,18 @@ O pipeline processa 13 métricas de esforço derivadas dos logs de submissão e 
 12. **M12 (Frequência de Edição):** Alterações realizadas no código.
 13. **M13 (Índice de Discriminação):** Poder da questão em distinguir desempenho.
 
+É importante destacar que os scripts calculam essas métricas realizando a leitura de toda a pasta de `transactions` originalmente. A filtragem utilizando apenas os IDs de prova é aplicada em uma etapa posterior, durante a consolidação dos dados. Essa arquitetura foi planejada para permitir que pesquisas futuras possam reaproveitar os mesmos scripts caso precisem calcular e analisar o atrito cognitivo em exercícios comuns e listas de fixação, além das provas oficiais.
+
 ## 4. Arquitetura do Classificador
 
-O sistema utiliza uma arquitetura de duas passagens (*Two-Pass Analysis*):
+O sistema utiliza uma arquitetura de duas passagens (Two-Pass Analysis):
 
 * **Parte 1:** Extrai métricas estruturais (profundidade, complexidade ciclomática, contagem de laços e condicionais).
 * **Parte 2:** Detecta os padrões algorítmicos utilizando o contexto global fornecido pela primeira passagem, garantindo maior precisão na classificação e redução de falsos positivos.
 
 ## 5. Estrutura
 
-Como os arquivos brutos de logs e submissões são muito pesados, eles **não estão versionados neste repositório**. 
+Como os arquivos brutos de logs e submissões são muito pesados, eles não estão versionados neste repositório.
 
 ```text
 📁 raiz_do_projeto/
@@ -76,5 +78,7 @@ Como os arquivos brutos de logs e submissões são muito pesados, eles **não es
 │       │       └── 📁 1407130552/         # ID do Trabalho
 │       │           └── 📄 2667036473.log  # ID da questão + Log de keystrokes/submissões
 │       └── 📁 ...
+
 ```
+
 > **Nota:** Ajuste o caminho dos dados nos scripts caso seja necessário.
