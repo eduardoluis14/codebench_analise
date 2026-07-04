@@ -14,24 +14,23 @@ Para que o pipeline de extração funcione corretamente, o diretório raiz do pr
 
 ## 2. Catalogação de Padrões (Programming Plans)
 
-O sistema utiliza uma taxonomia baseada em planos de programação, adaptando conceitos da literatura de De Raadt (2008) e Cruz Izu (2021) para a sintaxe Python. Os padrões atuais são:
+O sistema utiliza uma taxonomia baseada em planos de programação, identificados por meio da análise estática (AST) do gabarito docente. A catalogação inicial abrangeu 11 padrões estruturais. Contudo, para garantir a significância estatística das comparações (seguindo o critério de $N \ge 30$ instâncias por padrão), a análise foi consolidada nos 6 padrões que atingiram o piso amostral mínimo.
 
-* **Input-Process-Output (IPO):** Sequência lógica básica de entrada, processamento e saída.
-* **Conditional Branching:** Tomada de decisão complexa com caminhos alternativos (`if/else`, `elif`).
-* **Initialisation:** Definição de variáveis de controle antes de estruturas iterativas.
-* **Divisibility:** Testes lógicos envolvendo o operador de módulo (`%`).
-* **Number Decomposition:** Fatiamento de dígitos de números inteiros via divisões sucessivas.
-* **Min/Max:** Aplicação de funções de extração de extremos.
-* **Triangular Swap:** Troca de valores entre variáveis.
-* **Filter A Collection:** Filtragem de séries de dados.
-* **Guarded Exception:** Estruturas de interrupção para controle de fluxo.
-* **Validate:** Verificação de validade de estados dentro de laços.
-* **Indicators:** Utilização de flags booleanas para controle.
-* **Delimiting Strings:** Lógica para formatação de saída.
-* **MultiCount:** Contagem múltipla utilizando estruturas de dados.
-* **Command Line Arguments:** Tratamento de argumentos via terminal.
+**Padrões identificados:**
 
-> **Nota:** Este catálogo encontra-se em fase de validação e está sujeito a refinamentos semânticos em versões futuras.
+* **Input-Output Sequencial:** Leitura, processamento e saída sem ramificações. 
+* **Condicional Simples:** Uso de estrutura `if` isolada.
+* **Condicional Composto:** Uso de estrutura `if/else`. 
+* **Condicional Encadeado:** Uso de estrutura `if/elif/else`.
+* **Condicional Aninhado:** Estrutura `if` inserida em outro `if`. 
+* **Repetição com Condição e Incremento:** Laço contendo `if` com incremento de variável. 
+* **Repetição com Condição e Acúmulo:** Laço contendo `if` com acúmulo de variável. 
+* **Repetição - Incremento de variável:** Laço simples de contagem.
+* **Repetição - Acúmulo de variável:** Laço simples de somatório.
+* **Estrutura Linear (Iteração por índice):** Acesso a elementos via índices (`range`, `len`).
+* **Estrutura Linear (Iteração por valor):** Acesso direto a elementos da coleção.
+
+> **Nota:** Os padrões marcados como (*Analisado*) compõem o conjunto final de 329 exercícios utilizados nos testes estatísticos de esforço. Os demais padrões foram catalogados, mas descartados da análise inferencial por não atingirem o volume mínimo de dados para conferir robustez estatística aos resultados.
 
 ## 3. Cálculo de Métricas (Atrito Cognitivo)
 
